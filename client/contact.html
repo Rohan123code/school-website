@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us - Kindergarten School</title>
+<style>
+/* ==== Global Styles ==== */
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Poppins', sans-serif, cursive, sans-serif; }
+body { background: linear-gradient(to bottom right, #fef6e4, #e0f7fa); min-height:100vh; display:flex; flex-direction:column; }
+
+header {
+  background: linear-gradient(to right, #8f00ff, #ffce00);
+  padding: 10px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header .logo { display:flex; align-items:center; gap:10px; }
+header .logo img { width:40px; height:40px; border-radius:50%; }
+header h3 { font-size:1.1rem; }
+
+nav { display:flex; flex-wrap:wrap; justify-content:center; }
+nav a { color:white; margin:5px 10px; text-decoration:none; font-weight:bold; font-size:0.9rem; }
+nav a:hover { text-decoration:underline; }
+
+/* ==== Page Header ==== */
+.page-header { text-align:center; padding:40px 20px 20px; }
+.page-header h1 {
+  font-size:2.5rem;
+  background: linear-gradient(to right, #ffffff, #ffd700);
+  -webkit-background-clip: text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+}
+.page-header p { font-size:1.2rem; margin-top:5px; }
+
+/* ==== Contact Box ==== */
+.contact-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  width:90%;
+}
+
+.contact-container h2 { text-align:center; margin-bottom:20px; color:#663399; font-size:1.8rem; }
+
+.contact-box { display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; }
+
+.contact-box form { flex:1; min-width:280px; display:flex; flex-direction:column; }
+.contact-img { flex:1; display:flex; justify-content:center; }
+.contact-img img { max-width:100%; height:auto; border-radius:0; background:transparent; box-shadow:none; }
+
+label { margin-bottom:5px; font-weight:bold; font-size:0.95rem; }
+input, textarea { padding:12px; margin-bottom:5px; border-radius:10px; border:1px solid #ccc; font-size:1rem; transition:0.3s; width:100%; }
+input:focus, textarea:focus { outline:none; border-color:#9966ff; box-shadow:0 0 6px rgba(153,102,255,0.4); }
+
+.error { color:red; font-size:0.85rem; margin-bottom:10px; display:none; }
+button { background:linear-gradient(to right, #ff99cc, #9966ff); border:none; color:white; font-size:1rem; font-weight:bold; padding:14px; border-radius:15px; cursor:pointer; transition:0.3s; margin-top:10px; }
+button:hover { transform:scale(1.05); }
+
+.success { color:green; margin-top:10px; }
+
+footer { margin-top:auto; background:#333; color:white; text-align:center; padding:15px; font-size:0.9rem; }
+
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+  .contact-box { flex-direction: column; }
+  .contact-img { margin-top:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<header>
+  <div class="logo">
+    <img src="img/logo.png" alt="School Logo">
+    <h3>Where Little <span>Dreams</span> Come True</h3>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="gallery2.html">Gallery</a>
+    <a href="fees.html">Fees Structure</a>
+    <a href="calender.html">Calendar</a>
+    <a href="popup.html">Admission</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<!-- Page Header -->
+<section class="page-header">
+  <h1>Contact Us</h1>
+  <p>We would love to hear from you!</p>
+</section>
+
+<div class="contact-container">
+  <h2>Get in Touch</h2>
+  <h3>Kindergarden lonara,nagpur,maharashtra.441111</h3>
+  <h3>Mo:-7058456148</h3>
+  <h3>Gmail:-kindergarden.edu.in@gmail.com</h3>
+
+  <div class="contact-box">
+    <!-- Form -->
+    <form id="contactForm">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+      <div id="nameError" class="error">⚠️ Name must be at least 3 characters.</div>
+
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required>
+      <div id="emailError" class="error">⚠️ Please enter a valid email address.</div>
+
+      <label for="message">Message (Optional):</label>
+      <textarea id="message" name="message" rows="5"></textarea>
+      
+      <button type="submit">Send Message</button>
+      <div id="successMsg" class="success"></div>
+    </form>
+
+    <!-- Image -->
+    <div class="contact-img">
+      <img src="img/contact us 2.png" alt="Child on phone">
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2025 Kindergarden | Shriyaro.</p>
+</footer>
+
+<script>
+const contactForm = document.getElementById("contactForm");
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
+const successMsg = document.getElementById("successMsg");
+
+contactForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  nameError.style.display = "none";
+  emailError.style.display = "none";
+  successMsg.textContent = "";
+
+  const name = contactForm.name.value.trim();
+  const email = contactForm.email.value.trim();
+  const message = contactForm.message.value.trim();
+
+  let isValid = true;
+  if (name.length < 3) { nameError.style.display = "block"; isValid = false; }
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email)) { emailError.style.display = "block"; isValid = false; }
+  if (!isValid) return;
+
+  try {
+    const res = await fetch("http://localhost:5000/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message })
+    });
+    const result = await res.json();
+    if (result.success) {
+      successMsg.textContent = "✅ Your message has been sent!";
+      contactForm.reset();
+    } else {
+      successMsg.textContent = "❌ Error: " + result.error;
+    }
+  } catch (err) {
+    successMsg.textContent = "⚠️ Could not connect to server.";
+    console.error(err);
+  }
+});
+</script>
+
+</body>
+</html>
